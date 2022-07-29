@@ -1,0 +1,10 @@
+docs_dir: docs/book
+site_dir: docs/html
+nav:
+    - Home: index.md
+
+site_name: laminas-mvc-view
+site_description: 'Bridges Laminas MVC and Laminas View components.'
+repo_url: 'https://github.com/laminas/laminas-mvc-view'
+extra:
+    project: Components
