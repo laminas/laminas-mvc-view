@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\Mvc\View;
 
 use Laminas\ServiceManager\ConfigInterface;
+use Laminas\View\Helper as ViewHelper;
 
 /** @psalm-import-type ServiceManagerConfigurationType from ConfigInterface */
 final class ConfigProvider
@@ -27,6 +28,16 @@ final class ConfigProvider
                  */
                 'server_url' => null, // i.e 'https://example.com'
             ],
+            /**
+             * MVC has historically used the `view_manager` top-level key for a range of configuration options
+             */
+            'view_manager' => [
+                /**
+                 * Configure a doctype for HTML views by selecting one of the available constants in the
+                 * {@link ViewHelper\Doctype} helper class.
+                 */
+                'doctype' => null,
+            ],
         ];
     }
 
@@ -42,6 +53,10 @@ final class ConfigProvider
         return [
             'factories' => [
                 Helper\ServerUrl::class => Helper\Factory\ServerUrlFactory::class,
+                /**
+                 * Factories for helpers in Laminas\View
+                 */
+                ViewHelper\Doctype::class => Helper\Factory\DoctypeFactory::class,
             ],
             'aliases'   => [
                 'serverUrl' => Helper\ServerUrl::class,
