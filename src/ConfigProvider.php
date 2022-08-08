@@ -53,6 +53,7 @@ final class ConfigProvider
         return [
             'factories' => [
                 Helper\ServerUrl::class => Helper\Factory\ServerUrlFactory::class,
+                Helper\Url::class       => Helper\Factory\UrlFactory::class,
                 /**
                  * Factories for helpers in Laminas\View
                  */
@@ -60,6 +61,7 @@ final class ConfigProvider
             ],
             'aliases'   => [
                 'serverUrl' => Helper\ServerUrl::class,
+                'url'       => Helper\Url::class,
             ],
         ];
     }
