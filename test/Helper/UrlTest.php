@@ -153,17 +153,6 @@ final class UrlTest extends TestCase
         );
     }
 
-    public function testThatControllerIsSourcedFromModuleRouteListenerWhenAvailable(): void
-    {
-        $this->routeMatch->setMatchedRouteName('default');
-        $this->routeMatch->setParam(ModuleRouteListener::ORIGINAL_CONTROLLER, 'groovy');
-
-        self::assertEquals(
-            '/groovy/bar',
-            $this->helper->__invoke('default', ['action' => 'bar'], [], true)
-        );
-    }
-
     public function testThatGivenControllerOverridesControllerFoundInModuleRouteListener(): void
     {
         $this->routeMatch->setMatchedRouteName('default');

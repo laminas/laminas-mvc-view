@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laminas\Mvc\View\Helper;
 
-use Laminas\Mvc\ModuleRouteListener;
 use Laminas\Mvc\View\Exception\RouteNotMatchedException;
 use Laminas\Router\RouteInterface;
 use Laminas\Router\RouteMatch;
@@ -17,7 +16,6 @@ use function func_num_args;
 use function is_array;
 use function is_bool;
 use function is_object;
-use function is_string;
 
 final class Url
 {
@@ -71,21 +69,7 @@ final class Url
         assert(is_array($options));
 
         if ($reuseMatchedParams) {
-            $routeMatchParams = $this->routeMatch->getParams();
-
-            /** @var mixed $controller */
-            $controller = $routeMatchParams[ModuleRouteListener::ORIGINAL_CONTROLLER] ?? null;
-
-            if (is_string($controller)) {
-                $routeMatchParams['controller'] = $controller;
-                unset($routeMatchParams[ModuleRouteListener::ORIGINAL_CONTROLLER]);
-            }
-
-            if (isset($routeMatchParams[ModuleRouteListener::MODULE_NAMESPACE])) {
-                unset($routeMatchParams[ModuleRouteListener::MODULE_NAMESPACE]);
-            }
-
-            $params = array_merge($routeMatchParams, $params);
+            $params = array_merge($this->routeMatch->getParams(), $params);
         }
 
         $options['name'] = $name;
