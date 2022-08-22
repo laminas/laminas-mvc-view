@@ -55,6 +55,7 @@
     "scripts": {
         "check": [
             "@cs-check",
+            "psalm --stats",
             "@test"
         ],
         "cs-check": "phpcs",
