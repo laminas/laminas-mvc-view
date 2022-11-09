@@ -19,15 +19,10 @@ use function is_object;
 
 final class Url
 {
-    private RouteMatch $routeMatch;
-    private RouteStackInterface $router;
-
     public function __construct(
-        RouteMatch $routeMatch,
-        RouteStackInterface $router
+        private RouteMatch $routeMatch,
+        private RouteStackInterface $router
     ) {
-        $this->routeMatch = $routeMatch;
-        $this->router     = $router;
     }
 
     /**
