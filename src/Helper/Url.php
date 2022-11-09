@@ -43,6 +43,7 @@ final class Url
         $options = [],
         bool $reuseMatchedParams = false
     ): string {
+        /** @psalm-suppress RedundantCastGivenDocblockType */
         $name = $name ?? (string) $this->routeMatch->getMatchedRouteName();
         if ($name === '') {
             throw RouteNotMatchedException::withEmptyRouteName();

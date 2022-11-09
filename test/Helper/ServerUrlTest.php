@@ -47,7 +47,6 @@ class ServerUrlTest extends TestCase
 
     public function testAnEmptyStringCanBeGivenAsAPathWithTheSameResultAsNoPathArgument(): void
     {
-        /** @psalm-suppress InvalidArgument */
         self::assertSame('https://example.com', $this->helper->__invoke(''));
     }
 

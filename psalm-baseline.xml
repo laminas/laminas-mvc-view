@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="v4.25.0@d7cd84c4ebca74ba3419b9601f81d177bcbe2aac">
-  <file src="src/Helper/Url.php">
-    <RedundantCastGivenDocblockType occurrences="1">
-      <code>(string) $this-&gt;routeMatch-&gt;getMatchedRouteName()</code>
-    </RedundantCastGivenDocblockType>
-  </file>
-</files>
