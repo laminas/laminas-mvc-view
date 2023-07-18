@@ -17,7 +17,6 @@ class ModuleTest extends TestCase
         return [
             ['view_helpers', 'array'],
             ['view_helper_config', 'array'],
-            ['service_manager', 'array'],
             ['view_manager', 'array'],
         ];
     }

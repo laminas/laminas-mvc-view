@@ -19,7 +19,6 @@ final class ConfigProvider
     public function __invoke(): array
     {
         return [
-            'dependencies' => $this->getDependencyConfig(),
             'view_helpers' => $this->getViewHelperConfig(),
             /**
              * Configuration for Individual View Helpers
@@ -44,12 +43,6 @@ final class ConfigProvider
                 'doctype' => null,
             ],
         ];
-    }
-
-    /** @return ServiceManagerConfiguration */
-    public function getDependencyConfig(): array
-    {
-        return [];
     }
 
     /** @return ServiceManagerConfiguration */
