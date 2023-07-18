@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaminasTest\Mvc\View\Helper;
 
 use Laminas\Mvc\View\Helper\ServerUrl;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ServerUrlTest extends TestCase
@@ -24,7 +25,7 @@ class ServerUrlTest extends TestCase
     }
 
     /** @return list<array{0: non-empty-string, 1: string}> */
-    public function pathProvider(): array
+    public static function pathProvider(): array
     {
         return [
             ['/foo', 'https://example.com/foo'],
@@ -38,8 +39,8 @@ class ServerUrlTest extends TestCase
 
     /**
      * @param non-empty-string $path
-     * @dataProvider pathProvider
      */
+    #[DataProvider('pathProvider')]
     public function testPathArgumentsYieldTheExpectedUrl(string $path, string $expect): void
     {
         self::assertSame($expect, $this->helper->__invoke($path));

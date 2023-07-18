@@ -20,8 +20,8 @@ use function is_object;
 final class Url
 {
     public function __construct(
-        private RouteMatch $routeMatch,
-        private RouteStackInterface $router
+        private readonly RouteMatch $routeMatch,
+        private readonly RouteStackInterface $router
     ) {
     }
 
@@ -32,7 +32,7 @@ final class Url
      *
      * @param string|null $name Name of the route
      * @param iterable<string, mixed> $params Parameters for the link
-     * @param iterable<mixed>|bool $options Options for the route, or bool $reuseMatchedParams to skip the 4th argument
+     * @param iterable<string, mixed>|bool $options Options for the route, or boolean to skip the 4th argument
      * @param bool $reuseMatchedParams Whether to reuse matched parameters
      * @return string Url For the link href attribute
      * @throws RouteNotMatchedException If RouteMatch didn't contain a matched route name.
@@ -40,7 +40,7 @@ final class Url
     public function __invoke(
         ?string $name = null,
         iterable $params = [],
-        $options = [],
+        iterable|bool $options = [],
         bool $reuseMatchedParams = false
     ): string {
         /** @psalm-suppress RedundantCastGivenDocblockType */

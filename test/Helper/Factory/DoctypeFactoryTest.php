@@ -6,6 +6,7 @@ namespace LaminasTest\Mvc\View\Helper\Factory;
 
 use Laminas\Mvc\View\Helper\Factory\DoctypeFactory;
 use Laminas\View\Helper\Doctype;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -62,7 +63,7 @@ final class DoctypeFactoryTest extends TestCase
     }
 
     /** @return array<string, array{0: iterable<mixed>, 1: string}> */
-    public function configProvider(): array
+    public static function configProvider(): array
     {
         $helper  = new Doctype();
         $default = $helper->getDoctype();
@@ -75,7 +76,7 @@ final class DoctypeFactoryTest extends TestCase
         ];
     }
 
-    /** @dataProvider configProvider */
+    #[DataProvider('configProvider')]
     public function testConfigScenarios(iterable $config, string $expectedDoctype): void
     {
         $this->container->expects(self::once())

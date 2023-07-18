@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Laminas\Mvc\View;
 
-use Laminas\ServiceManager\ConfigInterface;
+use Laminas\ServiceManager\ServiceManager;
 use Laminas\View\Helper as ViewHelper;
 
-/** @psalm-import-type ServiceManagerConfigurationType from ConfigInterface */
+/**
+ * @psalm-import-type ServiceManagerConfiguration from ServiceManager
+ * @psalm-type ViewHelperConfiguration = array{
+ *     server_url?: non-empty-string|null,
+ * }
+ */
 final class ConfigProvider
 {
     /** @return array<string, mixed> */
@@ -41,13 +46,13 @@ final class ConfigProvider
         ];
     }
 
-    /** @return ServiceManagerConfigurationType */
+    /** @return ServiceManagerConfiguration */
     public function getDependencyConfig(): array
     {
         return [];
     }
 
-    /** @return ServiceManagerConfigurationType */
+    /** @return ServiceManagerConfiguration */
     public function getViewHelperConfig(): array
     {
         return [

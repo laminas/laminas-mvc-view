@@ -7,6 +7,7 @@ namespace LaminasTest\Mvc\View\Helper\Factory;
 use Laminas\Mvc\Application;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Mvc\View\Helper\Factory\UrlFactory;
+use Laminas\Mvc\View\Helper\Url;
 use Laminas\Router\Http\RouteMatch;
 use Laminas\Router\Http\TreeRouteStack;
 use PHPUnit\Framework\TestCase;
@@ -39,6 +40,7 @@ class UrlFactoryTest extends TestCase
                 ['Application', $application],
             ]);
 
-        (new UrlFactory())->__invoke($container);
+        $helper = (new UrlFactory())->__invoke($container);
+        self::assertInstanceOf(Url::class, $helper);
     }
 }
