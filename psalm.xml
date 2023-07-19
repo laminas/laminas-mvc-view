@@ -4,6 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedPsalmSuppress="true"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="true"
+    errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
         <directory name="src"/>
@@ -12,38 +16,18 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
-
-    <issueHandlers>
-        <InternalMethod>
-            <errorLevel type="suppress">
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::method"/>
-            </errorLevel>
-            <errorLevel type="suppress">
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturn"/>
-            </errorLevel>
-            <errorLevel type="suppress">
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
-            </errorLevel>
-            <errorLevel type="suppress">
-                <directory name="test" />
-                <referencedMethod name="Laminas\View\Helper\Escaper\AbstractHelper::__construct"/>
-            </errorLevel>
-        </InternalMethod>
-        <DeprecatedMethod>
-            <errorLevel type="suppress">
-                <directory name="test" />
-                <referencedMethod name="Laminas\View\Helper\Escaper\AbstractHelper::setEncoding" />
-            </errorLevel>
-            <errorLevel type="suppress">
-                <directory name="test" />
-                <referencedMethod name="Laminas\View\Helper\Escaper\AbstractHelper::getEscaper" />
-            </errorLevel>
-        </DeprecatedMethod>
-    </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
     <stubs>
         <file name=".psr-container.php.stub" preloadClasses="true" />
     </stubs>
+    <issueHandlers>
+        <!-- DataProviders all appear as unused to psalm -->
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="test" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+    </issueHandlers>
 </psalm>
