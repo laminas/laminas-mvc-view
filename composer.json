@@ -29,7 +29,7 @@
         "laminas/laminas-http": "^2.20",
         "laminas/laminas-mvc": "^3.8.0",
         "laminas/laminas-router": "^3.14.0",
-        "laminas/laminas-servicemanager": "^3.23",
+        "laminas/laminas-servicemanager": "^3.23 || ^4.0",
         "laminas/laminas-stdlib": "^3.20",
         "laminas/laminas-view": "^2.36",
         "psr/container": "^1.1.2 || ^2",
